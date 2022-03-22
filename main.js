@@ -1,26 +1,32 @@
 let bird;
-let pipe;
+let pipes = [];
 let wnx = 600;
 let wny = 600;
 
+
 function setup() {
-    pipe = new Pipe(600, random(100, 500))
+    pipes.push(new Pipe(600, random(100, 500)));
+    pipes.push(new Pipe(900, random(100, 500)));
     bird = new Bird(300, 300);
     createCanvas(wnx, wny);
 }
 
 function draw() {
     background(51);
-    pipe.update();
+
+    pipes.forEach(pipe => pipe.update());
     bird.update();
+    if (
+        pipes.map(pipe => pipe.isColliding(bird))
+            .includes(true)
+    ) noLoop();
+
     bird.render();
-    pipe.render();
+    pipes.forEach(pipe => pipe.render());
 }
 
 function keyPressed() {
     if (keyCode === 32) {
         bird.jump();
-        console.log("allo");
     }
-
 }

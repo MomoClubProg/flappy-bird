@@ -11,6 +11,20 @@ class Pipe {
     rect(this.x, 0, this.width, this.y - this.gapSize)
   }
   update() {
-    this.x = this.x - 1;
+    if (this.x <= -this.width) {
+      this.x = wnx;
+      this.y = random(100, 500);
+    } else {
+      this.x = this.x - 1;
+    }
+
+  }
+  isColliding(bird) {
+    return (
+      300 > this.x &&
+      300 < this.x + this.width &&
+      (bird.y < this.y - this.gapSize ||
+        bird.y > this.y)
+    );
   }
 }

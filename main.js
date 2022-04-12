@@ -3,7 +3,6 @@ let pipes = [];
 let wnx = 600;
 let wny = 600;
 
-
 function setup() {
     pipes.push(new Pipe(600, random(100, 500)));
     pipes.push(new Pipe(900, random(100, 500)));
@@ -12,24 +11,24 @@ function setup() {
 }
 
 function draw() {
+    // Background 
     background(51);
 
+
+    // Update every actor
     pipes.forEach(pipe => pipe.update());
     bird.update();
-    if (
-        pipes.map(pipe => pipe.isColliding(bird))
-            .includes(true)
-    ) noLoop();
 
+    // Check if game ended
     if(bird.isOutOfBounds()) noLoop();
+    if(bird.isColliding(pipe)) noLoop();
 
 
-    bird.render();
+    // Render every actor
     pipes.forEach(pipe => pipe.render());
+    bird.render();
 }
 
 function keyPressed() {
-    if (keyCode === 32) {
-        bird.jump();
-    }
+    if (keyCode === 32) bird.jump();
 }

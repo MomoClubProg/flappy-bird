@@ -31,14 +31,15 @@ function restartMenu(){
     fill(255)
 
     if(attemps>=1){
-    textSize(72)
-    textAlign(CENTER);
-    text("YOU LOST",300,300);
+
+        textSize(72)
+        textAlign(CENTER);
+        text("YOU LOST",wnx/2,wny/2);
     }
 
     textSize(50);
     textAlign(CENTER);
-    text("Press space to start",300,350);
+    text("Press space to start",wnx/2,wny/2+50);
 
 }
 
@@ -49,9 +50,9 @@ function initGame() {
     noLoop();
     restartMenu();
     pipes = [];
-    pipes.push(new Pipe(600, random(100, 500)));
-    pipes.push(new Pipe(900, random(100, 500)));
-    bird = new Bird(300, 300);
+    pipes.push(new Pipe(wnx, random(100, 500)));
+    pipes.push(new Pipe(wnx+300, random(100, 500)));
+    bird = new Bird(wnx/2, wny/2);
     attemps++;
     score=0;
 }

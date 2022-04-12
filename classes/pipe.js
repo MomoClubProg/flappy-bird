@@ -13,7 +13,7 @@ class Pipe {
   }
   update() {
     if (this.x+this.width==wnx/2) {
-      console.log('Hello world')
+      
       score++;
     }
     if (this.x <= -this.width) {

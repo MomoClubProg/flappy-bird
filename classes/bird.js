@@ -4,7 +4,7 @@ class Bird {
         this.ay = 0;
         this.x = x;
         this.y = y;
-        this.bird = loadImage('../assets/bird.pngs');
+        this.bird = loadImage('../assets/bird.png');
     }
     isColliding = (pipes) => pipes.map(pipe => 
         pipe.isColliding(this)
@@ -13,7 +13,7 @@ class Bird {
     render() {
         ellipse(this.x, this.y, 10, 10);
     }
-    
+
     isOutOfBounds() {
         return this.y<=0 || this.y>=wny;
     }

@@ -12,6 +12,10 @@ class Pipe {
     rect(this.x, 0, this.width, this.y - this.gapSize)
   }
   update() {
+    if (this.x+this.width==wnx/2) {
+      console.log('Hello world')
+      score++;
+    }
     if (this.x <= -this.width) {
       this.x = wnx;
       this.y = random(100, 500);

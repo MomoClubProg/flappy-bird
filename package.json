@@ -1,0 +1,24 @@
+{
+  "name": "flappy-bird",
+  "version": "1.0.0",
+  "description": "[Try it out](https://rawcdn.githack.com/MomoClubProg/flappy-bird/7d9c9971a97b1856f2db5304a4db2c0c73ca74b6/index.html)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MomoClubProg/flappy-bird.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MomoClubProg/flappy-bird/issues"
+  },
+  "homepage": "https://github.com/MomoClubProg/flappy-bird#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

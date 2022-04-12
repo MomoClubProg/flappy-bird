@@ -1,7 +1,8 @@
 let bird;
+let world;
 let pipes = [];
-let wnx = 600;
-let wny = 600;
+let wnx = 1920;
+let wny = 1080;
 
 
 function restartMenu(){
@@ -9,7 +10,7 @@ function restartMenu(){
     stroke(255)
     fill(255)
     /*textSize(72)
-    textAlign(CENTER);
+    textAlign(CENTER);0
     text("YOU LOST",300,300);*/
 
     textSize(50);
@@ -20,7 +21,7 @@ function restartMenu(){
 
 
 
-function init() {
+function initGame() {
 
     noLoop();
     restartMenu();
@@ -28,30 +29,32 @@ function init() {
     pipes.push(new Pipe(600, random(100, 500)));
     pipes.push(new Pipe(900, random(100, 500)));
     bird = new Bird(300, 300);
-    
+    world = new World(4);
+    createCanvas(wnx, wny);
 }
 
 function setup() {
-    init();
+    initGame();
     loop();
     createCanvas(wnx, wny);
 }
 
 function draw() {
     // Background 
-    background(51);
-
-
+    background(80,200,255);
+    
     // Update every actor
+    world.update();
     pipes.forEach(pipe => pipe.update());
     bird.update();
 
     // Check if game ended
-    if(bird.isOutOfBounds()) init();
-    if(bird.isColliding(pipes)) init();
+    if(bird.isOutOfBounds()) initGame();
+    if(bird.isColliding(pipes)) initGame();
 
 
     // Render every actor
+    world.render();
     pipes.forEach(pipe => pipe.render());
     bird.render();
 }

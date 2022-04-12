@@ -4,7 +4,7 @@ class Pipe {
     this.y = gapHeight;
     this.gapSize = 100;
     this.width = 50;
-    this.image = loadImage('../assets/pipe.png');
+    //this.image = loadImage('./assets/pipe.png');
   }
   render() {
     noStroke();

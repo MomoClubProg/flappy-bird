@@ -15,7 +15,7 @@ function restartMenu(){
 
     textSize(50);
     textAlign(CENTER);
-    text("Press space to start",300,350);
+    text("Press space to start",300, 350);
 
 }
 
@@ -26,9 +26,9 @@ function initGame() {
     noLoop();
     restartMenu();
     pipes = [];
-    pipes.push(new Pipe(600, random(100, 500)));
-    pipes.push(new Pipe(900, random(100, 500)));
-    bird = new Bird(300, 300);
+    pipes.push(new Pipe(1*wny/4 + wny , random(250, wny-250)));
+    pipes.push(new Pipe(2*wny/4 + wny, random(250, wny-250)));
+    bird = new Bird(wnx/2, wny/2);
     world = new World(4);
     createCanvas(wnx, wny);
 }
@@ -42,6 +42,7 @@ function setup() {
 function draw() {
     // Background 
     background(80,200,255);
+
     
     // Update every actor
     world.update();

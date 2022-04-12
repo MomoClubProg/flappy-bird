@@ -8,6 +8,11 @@ class Bird {
     render() {
         ellipse(this.x, this.y, 10, 10);
     }
+    
+    isOutOfBounds() {
+        return this.y<=0 || this.y>=wny;
+    }
+
     update() {
         this.vy -= this.ay
         this.vy = this.vy + 0.1;

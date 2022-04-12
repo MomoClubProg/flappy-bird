@@ -21,6 +21,9 @@ function draw() {
             .includes(true)
     ) noLoop();
 
+    if(bird.isOutOfBounds()) noLoop();
+
+
     bird.render();
     pipes.forEach(pipe => pipe.render());
 }

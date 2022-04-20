@@ -7,10 +7,9 @@ let wnx = 1920;
 let wny = 1080;
 let pipeNumber = 6;
 
-
 function setup() {
   // Create game instance
-  game = new Game();
+  stats = new Stats();
 
   initGame();
   loop();
@@ -20,24 +19,11 @@ function initGame() {
   noLoop();
 
   // Display menu screen
-  game.renderMenu();
-  game.newAttempt();
+  stats.newAttempt();
 
 
   // Create World instance
-  world = new World(4);
-
-  // Initiate pipes;
-  pipes = [];
-  for (let i = 0; i < pipeNumber; i++) {
-    pipes.push(new Pipe(
-      i * wnx / pipeNumber + ((pipeNumber - 1) * wnx) / pipeNumber,
-      random(250, wny - 250)
-    ));
-  }
-
-  // Create player
-  bird = new Bird(wnx / 2, wny / 2);
+  world = new World(4, 6);
 
   createCanvas(wnx, wny);
 }
@@ -45,21 +31,8 @@ function initGame() {
 
 function draw() {
   // Update every actor
-  world.update();
-  pipes.forEach(pipe => {
-    pipe.update();
-    pipe.checkScore(game);
-  });
-  bird.update();
-
-  // Check if game ended
-  if (bird.isOutOfBounds()) initGame();
-  if (bird.isColliding(pipes)) initGame();
+  world.update(stats);
 
   // Render every actor
-  world.render();
-  pipes.forEach(pipe => pipe.render());
-  bird.render();
-
-  game.renderCounters();
+  world.render(stats);
 }

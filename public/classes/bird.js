@@ -6,11 +6,18 @@ class Bird {
     this.y = y;
     //this.bird = loadImage('./assets/bird.png');
   }
-  isColliding = (pipes) => pipes.map(pipe =>
-    pipe.isColliding(this)
-  ).includes(true);
+
+  isColliding(pipe) {
+    return (
+      wnx / 2 > pipe.x - 3 &&
+      wnx / 2 < pipe.x + pipe.width + 3 &&
+      (this.y < pipe.y - pipe.gapSize + 3 ||
+        this.y > pipe.y - 3)
+    );
+  }
 
   render() {
+    fill(255)
     ellipse(this.x, this.y, 18, 18);
   }
 
@@ -27,6 +34,5 @@ class Bird {
   }
   jump() {
     this.ay = 9
-
   }
 }

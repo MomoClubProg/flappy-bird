@@ -15,9 +15,12 @@ class Pipe {
     rect(this.x, 0, this.width, this.y - this.gapSize)
   }
 
-  checkScore(game) {
-    if (this.x + this.width == wnx / 2) {
-      game.score.current++;
+  checkScore(worldInstance, statInstance) {
+    let diff = (this.x + this.width) - (wnx / 2);
+    // If distance between those two points is between -1.5 and 1.5
+    if (diff <= 1.5 && diff >= -1.5) {
+      statInstance.score.current++;
+      worldInstance.incrementNearestPipe();
     }
   }
 

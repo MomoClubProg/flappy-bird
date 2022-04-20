@@ -1,4 +1,5 @@
-class Game {
+// Save an instance of this class to `localStorage`
+class Stats {
   constructor() {
     this.score = {
       current: 0,
@@ -7,9 +8,9 @@ class Game {
     }
   }
 
-
-
   // Display an end game menu
+  // Should trigger a DOM menu and remove the Canvas
+  // A DOM control should restart this p5 canvas
   renderMenu() {
     stroke(255)
     fill(255)

@@ -22,6 +22,9 @@ class Background {
 
   }
 
+  reset() {
+    this.xoffset = new Array(this.xoffset.length).fill(0);
+  }
 
   update() {
     // Offset each layer
@@ -37,7 +40,7 @@ class Background {
   }
 
   render() {
-
+    background(80, 200, 255);
     for (let i = 0; i < this.imageLayers.length; i++) {
       // Image 1
       image(

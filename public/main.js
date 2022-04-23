@@ -1,48 +1,34 @@
-let game;
 let world;
-let bckg;
 
 let wnx = window.innerWidth;
 let wny = window.innerHeight;
 
-
-
-let pipeNumber = isMobile ? 2 : 6;
-
-
 function setup() {
+  refVector = createVector(1, 0);
   // Create game instance
   stats = new Stats();
-
   // Load assets
-  bckg = new Background();
+  let bckg = new Background();
 
-
+  // Create World instance
+  world = new World(isMobile ? 2 : 4, bckg);
   frameRate(120);
-  initGame();
-  loop();
+  createCanvas(wnx, wny);
 }
 
 function initGame() {
-  noLoop();
-
   // Display menu screen
   stats.newAttempt();
 
-
-  // Create World instance
-  world = new World(pipeNumber, bckg);
-
-  createCanvas(wnx, wny);
+  world.reset();
 }
 
 
 function draw() {
   // Update every actor
-  world.update(stats);
-
+  world.update();
   // Render every actor
-  world.render(stats);
+  world.render();
 
   stats.renderMenu();
 }

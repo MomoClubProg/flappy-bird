@@ -33,12 +33,6 @@ class Stats {
     noStroke(0);
     fill(0);
 
-    if (this.score.attempts >= 1) {
-      textSize(72)
-      textAlign(CENTER);
-      text("Perdu!", wnx / 2, wny / 2);
-    }
-
     textSize(wnx / 18);
     textAlign(CENTER);
     text("Appuyez pour recommencer", wnx / 2, wny / 2 + (wny / 12));
@@ -68,9 +62,10 @@ class Stats {
 
     textSize(20);
     textAlign(LEFT);
-    text("Essais: " + this.score.attempts, 20, 30);
-    text("Record: " + this.score.high, 20, 50);
-    text("Score: " + this.score.current, 20, 70);
+    text("Branche Dévélopement", 20, 30);
+    text("Essais: " + this.score.attempts, 20, 50);
+    text("Record: " + this.score.high, 20, 70);
+    text("Score: " + this.score.current, 20, 90);
 
     this.setHighScore();
   }

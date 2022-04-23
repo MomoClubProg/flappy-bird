@@ -1,16 +1,31 @@
+function getUniqueID() {
+  return "3834738478374"
+}
+
 // Save an instance of this class to `localStorage`
 class Stats {
   constructor() {
-    let item = localStorage.getItem("Score");
+    let item = localStorage.getItem("UserSession");
     if (item === null) {
+      this.user = {
+        name: getUniqueID(),
+      }
+      this.platform = isMobile ? "mobile" : "desktop";
       this.score = {
         current: 0,
         high: 0,
-        attempts: -1
+        attempts: 0
       }
     } else {
-      this.score = JSON.parse(item);
+      this.load(JSON.parse(item));
+
     }
+  }
+
+  load(data) {
+    this.user = data.user;
+    this.score = data.score;
+    this.platform = isMobile ? "mobile" : "desktop";
   }
 
   renderMenu() {
@@ -21,19 +36,19 @@ class Stats {
     if (this.score.attempts >= 1) {
       textSize(72)
       textAlign(CENTER);
-      text("YOU LOST", wnx / 2, wny / 2);
+      text("Perdu!", wnx / 2, wny / 2);
     }
 
-    textSize(wnx / 14);
+    textSize(wnx / 18);
     textAlign(CENTER);
-    text("Press space to start", wnx / 2, wny / 2 + (wny / 12));
+    text("Appuyez pour recommencer", wnx / 2, wny / 2 + (wny / 12));
   }
 
   newAttempt() {
     this.score.current = 0;
     this.score.attempts++;
 
-    localStorage.setItem("Score", JSON.stringify(this.score));
+    localStorage.setItem("UserSession", JSON.stringify(this));
   }
 
   // update high score
@@ -53,8 +68,8 @@ class Stats {
 
     textSize(20);
     textAlign(LEFT);
-    text("Attempts: " + this.score.attempts, 20, 30);
-    text("High score: " + this.score.high, 20, 50);
+    text("Essais: " + this.score.attempts, 20, 30);
+    text("Record: " + this.score.high, 20, 50);
     text("Score: " + this.score.current, 20, 70);
 
     this.setHighScore();

@@ -1,16 +1,24 @@
-let bird;
 let game;
 let world;
-let pipes = [];
+let bckg;
 
-let wnx = 1920;
-let wny = 1080;
-let pipeNumber = 6;
+let wnx = window.innerWidth;
+let wny = window.innerHeight;
+
+
+
+let pipeNumber = isMobile ? 2 : 6;
+
 
 function setup() {
   // Create game instance
   stats = new Stats();
 
+  // Load assets
+  bckg = new Background();
+
+
+  frameRate(50);
   initGame();
   loop();
 }
@@ -23,7 +31,7 @@ function initGame() {
 
 
   // Create World instance
-  world = new World(4, 6);
+  world = new World(pipeNumber, bckg);
 
   createCanvas(wnx, wny);
 }
@@ -35,4 +43,6 @@ function draw() {
 
   // Render every actor
   world.render(stats);
+
+  stats.renderMenu();
 }

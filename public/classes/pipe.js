@@ -1,24 +1,27 @@
-const SPEED = 1.3;
+const SPEED = (isMobile ? 2.5 : 3.25);
+const COLLISON_RANGE = isMobile ? 3 : 3;
 class Pipe {
   constructor(x, gapHeight) {
     this.x = x;
     this.y = gapHeight;
-    this.gapSize = 120;
+    this.gapSize = isMobile ? 175 : 120;
     this.width = 50;
-    this.speed = 2.5 * SPEED;
+    this.speed = SPEED;
+
     //this.image = loadImage('./assets/pipe.png');
   }
 
   render() {
     noStroke();
+    fill(200);
     rect(this.x, this.y, this.width, wny - this.y)
     rect(this.x, 0, this.width, this.y - this.gapSize)
   }
 
-  checkScore(worldInstance, statInstance) {
-    let diff = (this.x + this.width) - (wnx / 2);
+  checkScore(worldInstance, statInstance, bird) {
+    let diff = (this.x + this.width) - bird.x;
     // If distance between those two points is between -1.5 and 1.5
-    if (diff <= 1.5 && diff >= -1.5) {
+    if (diff <= COLLISON_RANGE && diff >= -COLLISON_RANGE) {
       statInstance.score.current++;
       worldInstance.incrementNearestPipe();
     }
@@ -27,10 +30,11 @@ class Pipe {
   update() {
     if (this.x <= -this.width) {
       this.x = wnx;
-      this.y = random(250, wny - 250);
+      this.y = random(wny / 2, wny - (wny / 4));
     } else {
       this.x = this.x - this.speed;
     }
+    this.speed += 0.001;
   }
 
   isColliding(bird) {

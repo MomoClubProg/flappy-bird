@@ -1,19 +1,26 @@
 // Save an instance of this class to `localStorage`
 class Stats {
   constructor() {
-    this.score = {
-      current: 0,
-      high: 0,
-      attempts: -1
+    let item = localStorage.getItem("Score");
+    if (item === null) {
+      this.score = {
+        current: 0,
+        high: 0,
+        attempts: -1
+      }
+    } else {
+      this.score = JSON.parse(item);
     }
+
   }
 
   // Display an end game menu
   // Should trigger a DOM menu and remove the Canvas
   // A DOM control should restart this p5 canvas
   renderMenu() {
-    stroke(255)
-    fill(255)
+    if (!world.pause) return;
+    noStroke(0);
+    fill(0);
 
     if (this.attemps >= 1) {
       textSize(72)
@@ -21,7 +28,7 @@ class Stats {
       text("YOU LOST", wnx / 2, wny / 2);
     }
 
-    textSize(50);
+    textSize(wnx / 14);
     textAlign(CENTER);
     text("Press space to start", wnx / 2, wny / 2 + (wny / 12));
   }
@@ -29,6 +36,8 @@ class Stats {
   newAttempt() {
     this.score.current = 0;
     this.score.attempts++;
+
+    localStorage.setItem("Score", JSON.stringify(this.score));
   }
 
   // update high score

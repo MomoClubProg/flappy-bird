@@ -1,24 +1,29 @@
+const GRAVITY = (isMobile) ? 0.8 : 0.36;
+const FRICTION = isMobile ? 0.94 : 0.95;
 class Bird {
   constructor(x, y) {
     this.vy = 0;
     this.ay = 0;
     this.x = x;
     this.y = y;
+    this.size = 18;
+    this.jumpThreshold = 0;
     //this.bird = loadImage('./assets/bird.png');
   }
 
   isColliding(pipe) {
     return (
-      wnx / 2 > pipe.x - 3 &&
-      wnx / 2 < pipe.x + pipe.width + 3 &&
+      this.x > pipe.x - 3 &&
+      this.x < pipe.x + pipe.width + 3 &&
       (this.y < pipe.y - pipe.gapSize + 3 ||
         this.y > pipe.y - 3)
     );
   }
 
   render() {
-    fill(255)
-    ellipse(this.x, this.y, 18, 18);
+    noStroke();
+    fill(255);
+    circle(this.x, this.y, this.size);
   }
 
   isOutOfBounds() {
@@ -26,13 +31,17 @@ class Bird {
   }
 
   update() {
-    this.ay -= 0.3;
+    this.ay -= GRAVITY;
     this.vy -= this.ay
     this.y = this.y + this.vy;
-    this.vy *= 0.97;
+    this.vy *= FRICTION;
     this.ay *= 0;
+    this.jumpThreshold++;
   }
   jump() {
-    this.ay = 9
+    if (this.jumpThreshold > 3) {
+      this.ay = 12;
+      this.jumpThreshold = 0;
+    }
   }
 }

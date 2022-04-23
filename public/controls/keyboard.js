@@ -1,7 +1,21 @@
-function keyPressed() {
-  // Bird jump mechanic
-  if (keyCode === 32) world.bird.jump();
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-  // If space is pressed while the game is stopped, restart the game
-  if (keyCode === 32)(isLooping() ? (() => {})() : loop());
+function jumpKey() {
+  if (world.pause) {
+    initGame();
+    loop();
+  } else {
+    world.bird.jump();
+  }
+
+}
+
+function keyPressed() {
+  if (keyCode === 32) {
+    jumpKey();
+  }
+}
+
+function touchStarted() {
+  jumpKey();
 }

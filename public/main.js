@@ -1,38 +1,34 @@
-let bird;
-let game;
 let world;
-let pipes = [];
 
-let wnx = 1920;
-let wny = 1080;
-let pipeNumber = 6;
+let wnx = window.innerWidth;
+let wny = window.innerHeight;
 
 function setup() {
+  refVector = createVector(1, 0);
   // Create game instance
   stats = new Stats();
+  // Load assets
+  let bckg = new Background();
 
-  initGame();
-  loop();
+  // Create World instance
+  world = new World(isMobile ? 2 : 4, bckg);
+  frameRate(120);
+  createCanvas(wnx, wny);
 }
 
 function initGame() {
-  noLoop();
-
   // Display menu screen
   stats.newAttempt();
 
-
-  // Create World instance
-  world = new World(4, 6);
-
-  createCanvas(wnx, wny);
+  world.reset();
 }
 
 
 function draw() {
   // Update every actor
-  world.update(stats);
-
+  world.update();
   // Render every actor
-  world.render(stats);
+  world.render();
+
+  stats.renderMenu();
 }

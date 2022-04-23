@@ -1,27 +1,30 @@
 // Save an instance of this class to `localStorage`
 class Stats {
   constructor() {
-    this.score = {
-      current: 0,
-      high: 0,
-      attempts: -1
+    let item = localStorage.getItem("Score");
+    if (item === null) {
+      this.score = {
+        current: 0,
+        high: 0,
+        attempts: -1
+      }
+    } else {
+      this.score = JSON.parse(item);
     }
   }
 
-  // Display an end game menu
-  // Should trigger a DOM menu and remove the Canvas
-  // A DOM control should restart this p5 canvas
   renderMenu() {
-    stroke(255)
-    fill(255)
+    if (!world.pause) return;
+    noStroke(0);
+    fill(0);
 
-    if (this.attemps >= 1) {
+    if (this.score.attempts >= 1) {
       textSize(72)
       textAlign(CENTER);
       text("YOU LOST", wnx / 2, wny / 2);
     }
 
-    textSize(50);
+    textSize(wnx / 14);
     textAlign(CENTER);
     text("Press space to start", wnx / 2, wny / 2 + (wny / 12));
   }
@@ -29,6 +32,8 @@ class Stats {
   newAttempt() {
     this.score.current = 0;
     this.score.attempts++;
+
+    localStorage.setItem("Score", JSON.stringify(this.score));
   }
 
   // update high score
@@ -39,11 +44,16 @@ class Stats {
 
   // Render counters & update high score
   renderCounters() {
-    stroke(255);
-    fill(255);
+    noStroke();
+
+    if (world.pause)
+      fill(0);
+    else
+      fill(255)
+
     textSize(20);
     textAlign(LEFT);
-    text("Attemps: " + this.score.attempts, 20, 30);
+    text("Attempts: " + this.score.attempts, 20, 30);
     text("High score: " + this.score.high, 20, 50);
     text("Score: " + this.score.current, 20, 70);
 

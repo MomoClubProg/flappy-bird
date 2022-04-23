@@ -8,6 +8,7 @@ class World {
     this.background = background;
 
     // Pipes
+    this.gapSize = wny / 5.8; // isMobile ? 110 : 120;
     this.pipes = [];
     this.offsetFunc = isMobile ? World.mobilePipeOffset : World.desktopPipeOffset;
     this.nearestPipeIndex = 0;
@@ -15,7 +16,8 @@ class World {
       let offset = this.offsetFunc(i, pipeNumber);
       this.pipes.push(new Pipe(
         offset,
-        random(250, wny - 250)
+        random(250, wny - 250),
+        this.gapSize
       ));
     }
 
@@ -53,7 +55,8 @@ class World {
       let offset = this.offsetFunc(i, pipeNumber);
       this.pipes.push(new Pipe(
         offset,
-        random(250, wny - 250)
+        random(250, wny - 250),
+        this.gapSize
       ));
     }
 
@@ -136,6 +139,15 @@ class World {
     await World.delay(250);
     world.pause = true;
     loop();
+  }
+
+
+  // LIVE DEMO Methods
+  setGaps(n = 120) {
+    this.gapSize = n;
+    this.pipes.forEach(pipe => {
+      pipe.gapSize = n;
+    })
   }
 
 }

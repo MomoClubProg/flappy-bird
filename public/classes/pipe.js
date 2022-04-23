@@ -1,10 +1,10 @@
 let SPEED = (isMobile ? 2 : 3.25);
 
 class Pipe {
-  constructor(x, gapHeight) {
+  constructor(x, gapHeight, gapSize) {
     this.x = x;
     this.y = gapHeight;
-    this.gapSize = 120;
+    this.gapSize = gapSize;
     this.width = isMobile ? 42 : 50;
     this.speed = SPEED;
     this.collisionRange = 3;

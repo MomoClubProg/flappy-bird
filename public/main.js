@@ -11,7 +11,7 @@ function setup() {
   let bckg = new Background();
 
   // Create World instance
-  world = new World(isMobile ? 2 : 4, bckg);
+  world = new World(isMobile ? 2 : 5, bckg);
   frameRate(120);
   createCanvas(wnx, wny);
 }

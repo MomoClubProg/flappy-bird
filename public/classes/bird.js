@@ -1,6 +1,6 @@
-let GRAVITY = isMobile ? 0.48 : 0.36;
+let GRAVITY = isMobile ? 0.48 : 0.48;
 let FRICTION = isMobile ? 0.94 : 0.95;
-
+let JUMP_HEIGHT = isMobile ? 10.2 : 12;
 class Bird {
   constructor(x, y) {
     this.vy = 0;
@@ -16,7 +16,7 @@ class Bird {
   isColliding(pipe) {
     return (
       this.pos.x > pipe.x - 9 &&
-      this.pos.x < pipe.x + pipe.width + 9 &&
+      this.pos.x < pipe.x + pipe.width + 11 &&
       (this.pos.y < pipe.y - pipe.gapSize + 11 ||
         this.pos.y > pipe.y - 11)
     );
@@ -48,8 +48,8 @@ class Bird {
     // Bird's gravity
     this.ay -= GRAVITY;
     this.vy -= this.ay
-    this.vy = this.vy < -12 ? -12 : this.vy;
 
+    if (this.vy < -JUMP_HEIGHT) this.vy = -JUMP_HEIGHT;
 
     // Bird's rotation
     if (this.getAngle() < HALF_PI) this.dir.rotate(0.05);
@@ -62,18 +62,14 @@ class Bird {
 
   jump() {
     // Wait at least 5 frames for a new jump
-    if (this.jumpThreshold > 5) {
+    if (this.jumpThreshold > 1) {
       this.jumpThreshold = 0;
 
       // Add force upwards
-      this.ay = 10.8;
+      this.ay = JUMP_HEIGHT;
 
       // Rotate bird
-      let angle = this.getAngle();
-
-      if (angle > -HALF_PI + 1.8) {
-        this.dir.rotate(-1.414);
-      } else {
+      if (this.getAngle()) {
         this.dir.x = 0.35; // Set bird direction up(at an angle) with cartesian coordinates & normalize
         this.dir.y = -0.65;
         this.dir.normalize();

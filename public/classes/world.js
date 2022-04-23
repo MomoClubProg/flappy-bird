@@ -35,9 +35,6 @@ class World {
   static mobilePipeOffset(i, pipeNumber) {
     return i * (wnx / pipeNumber) + wnx;
   }
-  reset() {
-
-  }
 
   incrementNearestPipe() {
     if (this.nearestPipe < this.pipes.length - 1) {
@@ -46,14 +43,18 @@ class World {
       this.nearestPipe = 0;
     }
   }
+  updatePause() {
+    if (this.pausedTick > 200) return;
+    this.bird.size += this.pausedTick;
+    this.pausedTick += 5;
+  }
   update(statInstance) {
 
     if (this.pause) {
-      this.bird.size += this.pausedTick;
-      this.pausedTick += 5;
-
+      this.updatePause();
       return;
     }
+
     this.pausedTick = 0;
 
     this.background.update();

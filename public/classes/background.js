@@ -2,22 +2,21 @@ class Background {
   constructor(backgroundLayers = 4) {
     // Background
     this.imageLayers = [];
+    this.backgroundWidth = isMobile ? (3840 * wny) / 1080 : 3840;
+    this.backgroundHeight = isMobile ? wny : 1080;
 
     this.ytranslate = [
       wny / 6, -wny / 6,
       isMobile ? wny / 6 : 0,
-      isMobile ? wny / 6 : 0
+      isMobile ? wny / 6 : -wny / 32
     ];
-    this.xoffset = [];
 
-    this.backgroundWidth = isMobile ? (3840 * wny) / 1080 : 3840;
-    this.backgroundHeight = isMobile ? wny : 1080;
+    this.xoffset = new Array(backgroundLayers).fill(0);
 
     for (let i = 0; i < backgroundLayers; i++) {
       this.imageLayers.push(
         loadImage(`./assets/background/layer${i}.png`)
       );
-      this.xoffset.push((i + 1) * 1);
     }
 
 
@@ -38,8 +37,7 @@ class Background {
   }
 
   render() {
-    fill(10, 200, 60)
-    rect(0, (wny * 3) / 4, wnx, wny / 4);
+
     for (let i = 0; i < this.imageLayers.length; i++) {
       // Image 1
       image(
@@ -60,7 +58,6 @@ class Background {
     }
 
     push();
-
     fill(0, 0, 0, 100);
     rect(0, 0, wnx, wny);
     pop();

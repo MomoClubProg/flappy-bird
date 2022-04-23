@@ -18,7 +18,7 @@ function setup() {
   bckg = new Background();
 
 
-  frameRate(50);
+  frameRate(120);
   initGame();
   loop();
 }

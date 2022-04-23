@@ -1,5 +1,5 @@
-const GRAVITY = (isMobile) ? 0.8 : 0.36;
-const FRICTION = isMobile ? 0.94 : 0.95;
+const GRAVITY = (isMobile) ? 0.55 : 0.36;
+const FRICTION = isMobile ? 0.93 : 0.95;
 class Bird {
   constructor(x, y) {
     this.vy = 0;

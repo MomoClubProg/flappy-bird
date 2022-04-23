@@ -1,11 +1,11 @@
-const SPEED = (isMobile ? 2.5 : 3.25);
+const SPEED = (isMobile ? 2 : 3.25);
 const COLLISON_RANGE = isMobile ? 3 : 3;
 class Pipe {
   constructor(x, gapHeight) {
     this.x = x;
     this.y = gapHeight;
     this.gapSize = isMobile ? 175 : 120;
-    this.width = 50;
+    this.width = isMobile ? 40 : 50;
     this.speed = SPEED;
 
     //this.image = loadImage('./assets/pipe.png');
@@ -30,7 +30,7 @@ class Pipe {
   update() {
     if (this.x <= -this.width) {
       this.x = wnx;
-      this.y = random(wny / 2, wny - (wny / 4));
+      this.y = random(wny / 3.5, wny - (wny / 3.5));
     } else {
       this.x = this.x - this.speed;
     }

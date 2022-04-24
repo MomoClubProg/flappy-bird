@@ -42,6 +42,22 @@ class World {
     return i * (wnx / pipeNumber) + wnx - 26;
   }
 
+  // Get Game mode from link queries
+  static getGameMode() {
+    let queries = window.location.href.split('?')[1];
+
+    if (queries === undefined) return "normal";
+    let q = queries.split('&');
+    let gameMode;
+    for (let i = 0; i < q.length; i++) {
+      let s = q[i].split('=');
+      if (s[0] === 'd') {
+        gameMode = s[1]
+      }
+    }
+    return gameMode || "normal";
+  }
+
   reset() {
     // Background
     this.background.reset();

@@ -51,7 +51,7 @@ class World {
     let gameMode;
     for (let i = 0; i < q.length; i++) {
       let s = q[i].split('=');
-      if (s[0] === 'd') {
+      if (s[0] === 'mode') {
         gameMode = s[1]
       }
     }

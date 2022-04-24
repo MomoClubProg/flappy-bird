@@ -52,6 +52,10 @@ class Stats {
     noStroke(0);
     fill(0);
 
+    textSize(72)
+    textAlign(CENTER);
+    text("Perdu!", wnx / 2, wny / 2);
+
     textSize(wnx / 18);
     textAlign(CENTER);
     text("Appuyez pour recommencer", wnx / 2, wny / 2 + (wny / 12));

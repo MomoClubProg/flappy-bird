@@ -85,6 +85,8 @@ class Stats {
 
     textSize(20);
     textAlign(LEFT);
+
+    if (GAME_MODE !== 'normal') text(`Mode ${World.TRANSLATION[GAME_MODE]}`, 20, wny - 20);
     text("Essais: " + this.score.attempts, 20, 30);
     text("Record: " + this.score.high, 20, 50);
     text("Score: " + this.score.current, 20, 70);

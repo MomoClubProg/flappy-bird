@@ -1,6 +1,6 @@
 const wnx = window.innerWidth;
 const wny = window.innerHeight;
-const GAME_MODE = "normal"; // Change for different difficulty
+const GAME_MODE = World.getGameMode(); // Change for different difficulty
 // Should be affected by http queries, not hardcoded in .
 // raw.githack does not support http queries
 // Our own self-hosted server could (nodejs, express)
@@ -47,3 +47,10 @@ World.SETTINGS = ({
     NOISE_SPEED: 0.005
   }
 })[GAME_MODE];
+
+World.TRANSLATION = {
+  dev: "Dévelopement",
+  easy: "Facile",
+  normal: "",
+  hard: "Difficile"
+}

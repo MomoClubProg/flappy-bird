@@ -81,10 +81,9 @@ class Stats {
 
     textSize(20);
     textAlign(LEFT);
-    text("Mode Dévelopeur", 20, 30);
-    text("Essais: " + this.score.attempts, 20, 50);
-    text("Record: " + this.score.high, 20, 70);
-    text("Score: " + this.score.current, 20, 90);
+    text("Essais: " + this.score.attempts, 20, 30);
+    text("Record: " + this.score.high, 20, 50);
+    text("Score: " + this.score.current, 20, 70);
 
     this.setHighScore();
   }

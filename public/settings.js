@@ -1,6 +1,6 @@
 const wnx = window.innerWidth;
 const wny = window.innerHeight;
-const GAME_MODE = "dev"; // Change for different difficulty
+const GAME_MODE = "normal"; // Change for different difficulty
 // Should be affected by http queries, not hardcoded in .
 // raw.githack does not support http queries
 // Our own self-hosted server could (nodejs, express)

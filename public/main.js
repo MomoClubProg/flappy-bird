@@ -1,19 +1,21 @@
 let world;
 
-let wnx = window.innerWidth;
-let wny = window.innerHeight;
-
-function setup() {
+function preload() {
   refVector = createVector(1, 0);
   // Create game instance
   stats = new Stats();
+}
+
+function setup() {
   // Load assets
   let bckg = new Background();
 
   // Create World instance
   world = new World(isMobile ? 2 : 5, bckg);
-  frameRate(120);
+
   createCanvas(wnx, wny);
+  frameRate(120);
+
 }
 
 function initGame() {

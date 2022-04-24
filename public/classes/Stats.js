@@ -1,11 +1,12 @@
 function getUniqueID() {
-  return "3834738478374"
+  // Get ID from server
+  return "3834738478374" // dummy ID
 }
 
 // Save an instance of this class to `localStorage`
 class Stats {
   constructor() {
-    let item = localStorage.getItem("UserSession");
+    let item = localStorage.getItem(`FlappyBirdSession${GAME_MODE}`);
     if (item === null) {
       this.user = {
         name: getUniqueID(),
@@ -16,10 +17,28 @@ class Stats {
         high: 0,
         attempts: 0
       }
+      this.settings = {};
     } else {
       this.load(JSON.parse(item));
-
     }
+  }
+
+  execute(object) {
+    let ans = {};
+    for (let key in object) {
+      ans[key] = new Function(
+        "isMobile",
+        `return ${object[key]}`
+      )(isMobile);
+    }
+    return ans;
+  }
+
+  async fetchSettings() {
+    let settings = await fetch('./settings.json');
+    let s = await settings.json();
+    console.log(s)
+    this.settings = this.execute(s[GAME_MODE]);
   }
 
   load(data) {
@@ -42,7 +61,7 @@ class Stats {
     this.score.current = 0;
     this.score.attempts++;
 
-    localStorage.setItem("UserSession", JSON.stringify(this));
+    localStorage.setItem(`FlappyBirdSession${GAME_MODE}`, JSON.stringify(this));
   }
 
   // update high score

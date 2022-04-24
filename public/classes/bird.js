@@ -1,6 +1,3 @@
-let GRAVITY = isMobile ? 0.48 : 0.48;
-let FRICTION = isMobile ? 0.94 : 0.95;
-let JUMP_HEIGHT = isMobile ? 10.2 : 12;
 class Bird {
   constructor(x, y) {
     this.vy = 0;
@@ -46,16 +43,16 @@ class Bird {
 
   update() {
     // Bird's gravity
-    this.ay -= GRAVITY;
+    this.ay -= World.SETTINGS.GRAVITY;
     this.vy -= this.ay
 
-    if (this.vy < -JUMP_HEIGHT) this.vy = -JUMP_HEIGHT;
+    if (this.vy < -World.SETTINGS.JUMP_HEIGHT) this.vy = -World.SETTINGS.JUMP_HEIGHT;
 
     // Bird's rotation
     if (this.getAngle() < HALF_PI) this.dir.rotate(0.05);
 
     this.pos.y = this.pos.y + this.vy;
-    this.vy *= FRICTION;
+    this.vy *= World.SETTINGS.FRICTION;
     this.ay *= 0;
     this.jumpThreshold++;
   }
@@ -66,7 +63,7 @@ class Bird {
       this.jumpThreshold = 0;
 
       // Add force upwards
-      this.ay = JUMP_HEIGHT;
+      this.ay = World.SETTINGS.JUMP_HEIGHT;
 
       // Rotate bird
       if (this.getAngle()) {

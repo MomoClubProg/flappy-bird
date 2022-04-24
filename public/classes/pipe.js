@@ -1,14 +1,13 @@
-let SPEED = (isMobile ? 2 : 3.25);
-
 class Pipe {
   constructor(x, gapHeight, gapSize) {
     this.x = x;
     this.y = gapHeight;
     this.gapSize = gapSize;
-    this.width = isMobile ? 42 : 50;
-    this.speed = SPEED;
+    this.width = World.SETTINGS.PIPE_WIDTH;
+    this.speed = World.SETTINGS.SPEED;
     this.collisionRange = 3;
 
+    this.ran = random(0, 10000);
     //this.image = loadImage('./assets/pipe.png');
   }
 
@@ -41,6 +40,10 @@ class Pipe {
 
     this.speed += 0.001;
     this.collisionRange += 0.001;
+
+    if (World.SETTINGS.NOISE) {
+      this.y = wny / 2 * noise(world.tick * World.SETTINGS.NOISE_SPEED + this.ran) + wny / 4;
+    }
   }
 
   isColliding(bird) {

@@ -8,7 +8,7 @@ class World {
     this.background = background;
 
     // Pipes
-    this.gapSize = wny / 5.8; // isMobile ? 110 : 120;
+    this.gapSize = World.SETTINGS.GAP_SIZE;
     this.pipes = [];
     this.offsetFunc = isMobile ? World.mobilePipeOffset : World.desktopPipeOffset;
     this.nearestPipeIndex = 0;
@@ -115,7 +115,7 @@ class World {
 
 
     // Render Game instances
-    this.pipes.forEach((pipe, i) => {
+    this.pipes.forEach(pipe => {
       pipe.render()
     });
     this.bird.render();

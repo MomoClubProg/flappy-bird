@@ -14,8 +14,7 @@ function setup() {
   world = new World(isMobile ? 2 : 5, bckg);
 
   createCanvas(wnx, wny);
-  frameRate(120);
-
+  frameRate(60);
 }
 
 function initGame() {
@@ -23,12 +22,14 @@ function initGame() {
   stats.newAttempt();
 
   world.reset();
+
 }
 
 
 function draw() {
   // Update every actor
   world.update();
+
   // Render every actor
   world.render();
 

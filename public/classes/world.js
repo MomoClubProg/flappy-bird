@@ -99,21 +99,21 @@ class World {
     this.pausedTick += 4;
   }
 
-  update() {
+  update(dt) {
     if (this.pause) {
       this.updatePause();
       return;
     }
     this.pausedTick = 0;
-    this.background.update();
+    this.background.update(dt);
     if (this.startScreen) return; // Stop after updating background
 
     this.pipes.forEach(pipe => {
-      pipe.update();
+      pipe.update(dt);
     });
 
     this.pipes[this.nearestPipeIndex].checkScore(this.bird);
-    this.bird.update();
+    this.bird.update(dt);
 
     // Check if game ended
     // 1. Out of game boundaries

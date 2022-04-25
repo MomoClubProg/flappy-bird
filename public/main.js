@@ -14,7 +14,7 @@ function setup() {
   world = new World(isMobile ? 2 : 5, bckg);
 
   createCanvas(wnx, wny);
-  frameRate(60);
+  frameRate(120);
 }
 
 function initGame() {
@@ -28,7 +28,7 @@ function initGame() {
 
 function draw() {
   // Update every actor
-  world.update();
+  world.update(deltaTime);
 
   // Render every actor
   world.render();

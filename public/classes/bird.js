@@ -41,7 +41,7 @@ class Bird {
 
   getAngle = () => World.normal.angleBetween(this.dir);
 
-  update() {
+  update(dt) {
     // Bird's gravity
     this.ay -= World.SETTINGS.GRAVITY;
     this.vy -= this.ay
@@ -49,9 +49,9 @@ class Bird {
     if (this.vy < -World.SETTINGS.JUMP_HEIGHT) this.vy = -World.SETTINGS.JUMP_HEIGHT;
 
     // Bird's rotation
-    if (this.getAngle() < HALF_PI) this.dir.rotate(0.05);
+    if (this.getAngle() < HALF_PI) this.dir.rotate(0.003125 * dt);
 
-    this.pos.y = this.pos.y + this.vy;
+    this.pos.y = this.pos.y + (this.vy * dt);
     this.vy *= World.SETTINGS.FRICTION;
     this.ay *= 0;
     this.jumpThreshold++;

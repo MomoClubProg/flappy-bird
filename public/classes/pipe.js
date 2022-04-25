@@ -27,19 +27,17 @@ class Pipe {
     }
   }
 
-  update() {
-
-
+  update(dt) {
 
     if (this.x <= -this.width) {
       this.x = wnx;
       this.y = random(wny / 3.5, wny - (wny / 3.5));
     } else {
-      this.x = this.x - this.speed;
+      this.x = this.x - (this.speed * dt);
     }
 
-    this.speed += 0.001;
-    this.collisionRange += 0.001;
+    this.speed += 0.0000625;
+    this.collisionRange += 0.0000625 * dt;
 
     if (World.SETTINGS.NOISE) {
       this.y = wny / 2 * noise(world.tick * World.SETTINGS.NOISE_SPEED + this.ran) + wny / 4;

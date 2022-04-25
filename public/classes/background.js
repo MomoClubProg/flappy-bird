@@ -26,11 +26,11 @@ class Background {
     this.xoffset = new Array(this.xoffset.length).fill(0);
   }
 
-  update() {
+  update(dt) {
     // Offset each layer
     this.xoffset = this.xoffset.map((off, i) => {
       // Increment offset (first element being slower than the last)
-      off -= (i + 1) * 0.2 * World.SETTINGS.SPEED;
+      off -= (i + 1) * 0.2 * World.SETTINGS.SPEED * dt;
 
       // Restart position if layer is out of range
       if (off <= -this.backgroundWidth) off += this.backgroundWidth;

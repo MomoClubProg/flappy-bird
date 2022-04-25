@@ -17,12 +17,12 @@ World.SETTINGS = ({
     NOISE_SPEED: 0
   },
   easy: {
-    SPEED: isMobile ? 1.85 : 3.1,
+    SPEED: isMobile ? 1.55 : 3.1,
     GRAVITY: isMobile ? 0.48 : 0.48,
     FRICTION: isMobile ? 0.94 : 0.94,
     JUMP_HEIGHT: isMobile ? 10.2 : 12,
-    PIPE_WIDTH: isMobile ? 40 : 50,
-    GAP_SIZE: wny / 5.5,
+    PIPE_WIDTH: isMobile ? 38 : 50,
+    GAP_SIZE: wny / 5,
     NOISE: false,
     NOISE_SPEED: 0
   },

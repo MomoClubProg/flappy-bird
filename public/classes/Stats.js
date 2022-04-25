@@ -23,24 +23,6 @@ class Stats {
     }
   }
 
-  execute(object) {
-    let ans = {};
-    for (let key in object) {
-      ans[key] = new Function(
-        "isMobile",
-        `return ${object[key]}`
-      )(isMobile);
-    }
-    return ans;
-  }
-
-  async fetchSettings() {
-    let settings = await fetch('./settings.json');
-    let s = await settings.json();
-    console.log(s)
-    this.settings = this.execute(s[GAME_MODE]);
-  }
-
   load(data) {
     this.user = data.user;
     this.score = data.score;

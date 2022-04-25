@@ -7,7 +7,7 @@ const GAME_MODE = World.getGameMode(); // Change for different difficulty
 
 World.SETTINGS = ({
   dev: {
-    SPEED: isMobile ? 0.2 : 0.25,
+    SPEED: isMobile ? 0.22 : 0.27,
     GRAVITY: isMobile ? 0.05 : 0.05,
     FRICTION: isMobile ? 0.94 : 0.94,
     JUMP_HEIGHT: isMobile ? 0.76 : 1,
@@ -17,7 +17,7 @@ World.SETTINGS = ({
     NOISE_SPEED: 0
   },
   easy: {
-    SPEED: isMobile ? 0.2 : 0.25,
+    SPEED: isMobile ? 0.2 : 0.23,
     GRAVITY: isMobile ? 0.05 : 0.05,
     FRICTION: isMobile ? 0.94 : 0.94,
     JUMP_HEIGHT: isMobile ? 0.76 : 1,
@@ -27,7 +27,7 @@ World.SETTINGS = ({
     NOISE_SPEED: 0
   },
   normal: {
-    SPEED: isMobile ? 0.22 : 0.27,
+    SPEED: isMobile ? 0.22 : 0.29,
     GRAVITY: isMobile ? 0.05 : 0.05,
     FRICTION: isMobile ? 0.94 : 0.94,
     JUMP_HEIGHT: isMobile ? 0.76 : 1,
@@ -37,14 +37,14 @@ World.SETTINGS = ({
     NOISE_SPEED: 0
   },
   hard: {
-    SPEED: isMobile ? 0.2 : 0.25,
+    SPEED: isMobile ? 0.25 : 0.3,
     GRAVITY: isMobile ? 0.05 : 0.05,
     FRICTION: isMobile ? 0.94 : 0.94,
     JUMP_HEIGHT: isMobile ? 0.76 : 1,
     PIPE_WIDTH: isMobile ? 50 : 58,
     GAP_SIZE: wny / 6.5,
     NOISE: true,
-    NOISE_SPEED: 0.005
+    NOISE_SPEED: 0.0025
   }
 })[GAME_MODE];
 

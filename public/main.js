@@ -1,4 +1,5 @@
 let world;
+let DT;
 
 function preload() {
   refVector = createVector(1, 0);
@@ -12,7 +13,6 @@ function setup() {
 
   // Create World instance
   world = new World(isMobile ? 2 : 5, bckg);
-
   createCanvas(wnx, wny);
   frameRate(120);
 }
@@ -29,7 +29,6 @@ function initGame() {
 function draw() {
   // Update every actor
   world.update(deltaTime);
-
   // Render every actor
   world.render();
 

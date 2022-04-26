@@ -10,7 +10,7 @@ function jumpKey() {
     initGame();
     loop();
   } else {
-    world.bird.jump();
+    world.bird.jump(deltaTime);
   }
 
 }

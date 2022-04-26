@@ -17,7 +17,7 @@ World.SETTINGS = ({
     NOISE_SPEED: 0
   },
   easy: {
-    SPEED: isMobile ? 0.2 : 0.23,
+    SPEED: isMobile ? 0.18 : 0.2,
     GRAVITY: isMobile ? 0.05 : 0.05,
     FRICTION: isMobile ? 0.94 : 0.94,
     JUMP_HEIGHT: isMobile ? 0.9 : 1.2,

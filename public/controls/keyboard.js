@@ -22,5 +22,6 @@ function keyPressed() {
 }
 
 function touchStarted() {
+  if (event.type != 'touchstart') return true
   jumpKey();
 }

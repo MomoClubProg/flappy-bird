@@ -1,6 +1,8 @@
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 function jumpKey() {
+  console.log('JUMP');
+
   if (world.startScreen) {
     world.pause = false;
     world.startScreen = false;
@@ -11,6 +13,7 @@ function jumpKey() {
     loop();
   } else {
     world.bird.jump(deltaTime);
+    console.trace();
   }
 
 }

@@ -138,14 +138,12 @@ class World {
 
     stats.renderCounters();
 
-
     if (this.startScreen) {
       let fontSize = constrain(wnx / 18, 12, 48);
       textSize(fontSize);
 
       text("▲  Tap to start!", this.bird.pos.x - fontSize / 2, this.bird.pos.y + fontSize * 1.8);
     };
-
 
   }
 

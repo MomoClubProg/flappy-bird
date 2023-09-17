@@ -59,7 +59,7 @@ class Bird {
 
   jump(dt) {
     // Wait at least 5 frames for a new jump
-    if (this.jumpThreshold > 0.5 * dt) {
+    if (this.jumpThreshold > (0.5 * dt)) {
       this.jumpThreshold = 0;
 
       // Add force upwards

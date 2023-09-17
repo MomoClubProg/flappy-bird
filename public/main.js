@@ -14,7 +14,7 @@ function setup() {
   // Create World instance
   world = new World(isMobile ? 2 : 5, bckg);
   createCanvas(wnx, wny);
-  frameRate(120);
+  frameRate(80);
 }
 
 function initGame() {

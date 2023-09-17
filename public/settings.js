@@ -30,9 +30,9 @@ World.SETTINGS = ({
     SPEED: isMobile ? 0.22 : 0.29,
     GRAVITY: isMobile ? 0.05 : 0.05,
     FRICTION: isMobile ? 0.94 : 0.94,
-    JUMP_HEIGHT: isMobile ? 0.9 : 1.2,
+    JUMP_HEIGHT: isMobile ? 1.1 : 1.6,
     PIPE_WIDTH: isMobile ? 44 : 54,
-    GAP_SIZE: wny / 6.2,
+    GAP_SIZE: wny / 5.8,
     NOISE: false,
     NOISE_SPEED: 0
   },
